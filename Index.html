@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Church Bulletin Generator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="bar">
+  <h1>Church Bulletin Generator</h1>
+  <nav aria-label="Actions">
+    <button type="button" data-act="print">Print / PDF</button>
+    <button type="button" data-act="html">Download HTML</button>
+    <button type="button" data-act="copy">Copy text</button>
+    <button type="button" data-act="share">Share</button>
+    <button type="button" data-act="reset">Reset to sample</button>
+  </nav>
+  <div class="tabs">
+    <button type="button" id="tabEdit" aria-pressed="true">Edit</button>
+    <button type="button" id="tabView" aria-pressed="false">Preview</button>
+  </div>
+</header>
+<p id="msg" role="status" aria-live="polite"></p>
+
+<main class="app" data-view="edit">
+  <section class="panel" aria-label="Editor">
+    <p id="sampleNote" class="note">Sample content is loaded. Replace it with your own details.</p>
+
+    <fieldset>
+      <legend>Design</legend>
+      <div class="f"><label for="tpl">Template</label>
+        <select id="tpl" data-design="tpl">
+          <option value="royal">Royal Elegance</option>
+          <option value="minimal">Modern Minimalist</option>
+          <option value="anglican">Classic Anglican</option>
+          <option value="worship">Contemporary Worship</option>
+          <option value="youth">Youth Celebration</option>
+          <option value="anniv">Premium Anniversary</option>
+        </select></div>
+      <div class="f"><label for="theme">Colour theme</label>
+        <select id="theme" data-design="theme">
+          <option value="navy">Royal Blue and Gold</option>
+          <option value="burgundy">Burgundy and Cream</option>
+          <option value="emerald">Emerald Green and Gold</option>
+          <option value="black">Black and Gold</option>
+          <option value="white">White and Navy</option>
+          <option value="purple">Purple and Silver</option>
+        </select></div>
+      <div class="f"><label for="fmt">Format</label>
+        <select id="fmt" data-design="fmt">
+          <option value="a4">A4 Portrait</option>
+          <option value="a5">A5 Portrait</option>
+          <option value="land">A4 Landscape</option>
+          <option value="digital">Digital (WhatsApp / social)</option>
+        </select></div>
+      <div class="f"><label for="logo">Church logo (optional)</label>
+        <input type="file" id="logo" accept="image/*"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Show or hide sections</legend>
+      <label class="chk"><input type="checkbox" data-show="verse"> Scripture</label>
+      <label class="chk"><input type="checkbox" data-show="program"> Programme</label>
+      <label class="chk"><input type="checkbox" data-show="ministers"> Ministers &amp; guests</label>
+      <label class="chk"><input type="checkbox" data-show="notes"> Announcements</label>
+      <label class="chk"><input type="checkbox" data-show="contact"> Contact footer</label>
+    </fieldset>
+
+    <div id="forms"></div>
+  </section>
+
+  <section class="stage" aria-label="Bulletin preview">
+    <article id="sheet"></article>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

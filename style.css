@@ -1,0 +1,83 @@
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;font-family:system-ui,sans-serif;background:#e9e6df;color:#252525}
+button,input,select,textarea{font:inherit}
+button{min-height:44px;padding:0 14px;border:1px solid #14213D;background:#fff;color:#14213D;border-radius:8px;cursor:pointer}
+button:hover{background:#eef1f7}
+:focus-visible{outline:3px solid #C6A15B;outline-offset:2px}
+
+.bar{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;padding:10px 16px;background:#14213D;color:#fff}
+.bar h1{margin:0;font-size:1.15rem}
+.bar nav{display:flex;flex-wrap:wrap;gap:8px}
+.tabs{display:none;gap:8px}
+.tabs button[aria-pressed=true]{background:#C6A15B;color:#14213D}
+#msg{margin:0;padding:0 16px;min-height:1.4em;color:#8C2F39;font-weight:600}
+
+.app{display:grid;grid-template-columns:400px 1fr;gap:16px;padding:16px;align-items:start}
+.panel{background:#fff;border-radius:12px;padding:14px;max-height:calc(100vh - 110px);overflow:auto}
+.stage{overflow:auto;padding:4px}
+.note{background:#fff6dd;border:1px solid #C6A15B;padding:8px 10px;border-radius:8px;margin:0 0 10px}
+fieldset{border:1px solid #ccd;border-radius:10px;margin:0 0 14px;padding:10px}
+legend{font-weight:700;padding:0 6px;color:#14213D}
+.f{display:flex;flex-direction:column;gap:3px;margin-bottom:10px}
+.f label{font-size:.85rem;font-weight:600}
+input[type=text],input[type=date],input[type=time],input:not([type]),select,textarea{width:100%;min-height:44px;padding:8px;border:1px solid #99a;border-radius:6px;background:#fff}
+.chk{display:inline-flex;align-items:center;gap:6px;margin:0 12px 6px 0;min-height:32px}
+.row{display:grid;gap:6px;padding:8px;border:1px solid #ddd;border-radius:8px;margin-bottom:8px}
+.ctl{display:flex;gap:6px}
+.ctl button{min-width:44px;padding:0}
+
+/* ---------- Bulletin sheet ---------- */
+.sheet{margin:0 auto;background:var(--bg);color:var(--t);font:11pt/1.5 Georgia,serif;padding:14mm;box-shadow:0 4px 24px #0003}
+.fmt-a4{width:210mm;min-height:297mm}
+.fmt-a5{width:148mm;min-height:210mm;font-size:9.5pt;padding:10mm}
+.fmt-land{width:297mm;min-height:210mm}
+.fmt-digital{width:min(100%,480px);font-size:10.5pt;padding:8mm}
+.sheet h1,.sheet h2,.sheet h3{font-family:'Palatino Linotype',Georgia,serif;color:var(--p);margin:0}
+.hd{text-align:center;padding-bottom:6mm;margin-bottom:6mm;border-bottom:3px double var(--a)}
+.hd img{height:20mm;margin-bottom:3mm}
+.church{letter-spacing:.2em;text-transform:uppercase;font-size:.85em;font-weight:700;color:var(--p)}
+.sub,.cat,.when{margin:2px 0}
+.cat{font-size:.85em;text-transform:uppercase;letter-spacing:.12em;margin-top:5mm}
+.title{font-size:2.5em;line-height:1.1;margin:2mm 0}
+.theme{font-size:1.4em;font-style:italic;font-weight:500}
+.verse{margin:5mm 0;padding:4mm;text-align:center;font-style:italic;border-top:1px solid var(--a);border-bottom:1px solid var(--a)}
+.verse p{margin:0 0 2mm}
+.verse cite{font-weight:700;font-style:normal;color:var(--p)}
+.sheet h2.sec{font-size:1.15em;text-transform:uppercase;letter-spacing:.12em;margin:6mm 0 3mm;padding-bottom:1mm;border-bottom:2px solid var(--a)}
+.sheet table{width:100%;border-collapse:collapse}
+.sheet td{padding:2mm 3mm 2mm 0;border-bottom:1px solid #0002;vertical-align:top}
+.sheet td:first-child{white-space:nowrap;font-weight:700;color:var(--p)}
+.mi{display:flex;justify-content:space-between;gap:8px;padding:1.5mm 0;border-bottom:1px solid #0002}
+.nt{margin-bottom:3mm}.nt p{margin:0}
+.ft{margin-top:8mm;padding-top:3mm;border-top:3px double var(--a);text-align:center;font-size:.85em}
+
+.tpl-royal{outline:2px solid var(--a);outline-offset:-8mm}
+.tpl-minimal{font-family:system-ui,sans-serif}
+.tpl-minimal .hd{text-align:left;border-bottom:1px solid var(--p)}
+.tpl-minimal .sheet h2.sec,.tpl-minimal h2.sec{border-bottom:1px solid var(--p)}
+.tpl-anglican{border:3px solid var(--p);outline:1px solid var(--a);outline-offset:-6mm}
+.tpl-worship .hd{background:var(--p);padding:10mm;border:0;margin:-14mm -14mm 6mm}
+.tpl-worship .hd *{color:#fff}
+.tpl-worship .title{font-size:3.2em}
+.tpl-youth{font-family:system-ui,sans-serif}
+.tpl-youth .hd{text-align:left;border-bottom:8px solid var(--a)}
+.tpl-youth .title{text-transform:uppercase;font-weight:900}
+.tpl-youth h2.sec{background:var(--p);color:#fff;padding:1.5mm 3mm;border:0}
+.tpl-anniv{border:5px double var(--a);outline:1px solid var(--p);outline-offset:-4mm}
+.tpl-anniv .title{text-transform:uppercase;letter-spacing:.06em}
+
+@media (max-width:900px){
+  .app{grid-template-columns:1fr;padding:10px}
+  .tabs{display:flex}
+  .panel{max-height:none}
+  .app[data-view=edit] .stage{display:none}
+  .app[data-view=view] .panel{display:none}
+}
+@media print{
+  body{background:none}
+  .bar,.panel,#msg{display:none!important}
+  .app{display:block;padding:0}
+  .app .stage{display:block!important;overflow:visible;padding:0}
+  .sheet{box-shadow:none;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
